@@ -152,7 +152,9 @@ export default {
      * @returns {object}
      */
     timeLinePosition() {
-      const d = new Date();
+      const d = this.root.options.localZone
+        ? new Date(new Date().toLocaleString('en', { timeZone: this.root.options.localZone }))
+        : new Date();
       const current = d.getTime();
       const currentOffset = this.root.timeToPixelOffsetX(current);
       const timeLine = {
